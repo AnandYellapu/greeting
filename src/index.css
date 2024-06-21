@@ -1,13 +1,104 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Container Styling */
+.greeting-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Arial, sans-serif';
+  background: linear-gradient(to right, #4776E6, #8E54E9); /* Custom gradient background */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Name Styling */
+.greeting-name {
+  font-size: 48px; /* Increased font size */
+  opacity: 0;
+  animation: rotate 10s linear infinite, fadeIn 1s forwards;
+  transition: color 0.3s ease; /* Smooth color transition */
+  border-radius: 8px;
+  padding: 10px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Individual Name Styling */
+.greeting-name:nth-child(1) {
+  background: linear-gradient(to right, #FF512F, #DD2476); /* Gradient text color */
+}
+
+.greeting-name:nth-child(2) {
+  background: linear-gradient(to right, #42E695, #3BB2B8); /* Gradient text color */
+}
+
+.greeting-name:nth-child(3) {
+  background: linear-gradient(to right, #662D8C, #ED1E79); /* Gradient text color */
+}
+
+.greeting-name:nth-child(4) {
+  background: linear-gradient(to right, #00B4DB, #0083B0); /* Gradient text color */
+}
+
+.greeting-name:nth-child(5) {
+  background: linear-gradient(to right, #B24592, #F15F79); /* Gradient text color */
+}
+
+.greeting-name:nth-child(6) {
+  background: linear-gradient(to right, #D1913C, #FFD194); /* Gradient text color */
+}
+
+/* Greeting Message Styling */
+.greeting-message {
+  font-size: 64px; /* Larger font size */
+  opacity: 0;
+  animation: rotate 10s linear infinite, fadeIn 1s forwards;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Animation for Rotating */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation for Fading In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effect */
+.greeting-name:hover, .greeting-message:hover {
+  color: #f0f0f0; /* Light grey text color on hover */
+}
+
+/* Adding a Shadow and Border for a Better Look */
+.greeting-name, .greeting-message {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  color: transparent; /* Transparent text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow */
+}
+
+/* Border effect on hover */
+.greeting-name::before, .greeting-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1); /* Transparent background with opacity */
+  transition: left 0.3s ease; /* Smooth transition */
+}
+
+.greeting-name:hover::before, .greeting-message:hover::before {
+  left: 100%;
 }
