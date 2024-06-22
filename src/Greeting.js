@@ -1,34 +1,467 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+// import { Box, Typography, Slide } from '@mui/material';
+// import { keyframes } from '@emotion/react';
+// import { motion } from 'framer-motion';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import StarIcon from '@mui/icons-material/Star';
+// import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+// import ChildCareIcon from '@mui/icons-material/ChildCare';
+// import PetsIcon from '@mui/icons-material/Pets';
+// import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+// import WhatshotIcon from '@mui/icons-material/Whatshot';
+// import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+// import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 
+// const colors = ['#007BFF', '#FFC107', '#28A745', '#DC3545', '#6610f2', '#17a2b8', '#FF5733', '#C70039', '#900C3F'];
+// const icons = [
+//   <FavoriteIcon fontSize="large" />,
+//   <StarIcon fontSize="large" />,
+//   <EmojiEmotionsIcon fontSize="large" />,
+//   <ChildCareIcon fontSize="large" />,
+//   <PetsIcon fontSize="large" />,
+//   <SentimentVerySatisfiedIcon fontSize="large" />,
+//   <WhatshotIcon fontSize="large" />,
+//   <ThumbUpIcon fontSize="large" />,
+//   <EmojiNatureIcon fontSize="large" />
+// ];
+
+// const bounce = keyframes`
+//   0%, 20%, 50%, 80%, 100% {
+//     transform: translateY(0);
+//   }
+//   40% {
+//     transform: translateY(-30px);
+//   }
+//   60% {
+//     transform: translateY(-15px);
+//   }
+// `;
+
+// const rotateScale = keyframes`
+//   0%, 100% {
+//     transform: rotate(0deg) scale(1);
+//   }
+//   50% {
+//     transform: rotate(360deg) scale(1.5);
+//   }
+// `;
+
+// const textGradient = keyframes`
+//   0% {
+//     background-position: 0% 50%;
+//   }
+//   50% {
+//     background-position: 100% 50%;
+//   }
+//   100% {
+//     background-position: 0% 50%;
+//   }
+// `;
+
+// const glow = keyframes`
+//   0% {
+//     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+//   }
+//   50% {
+//     box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+//   }
+//   100% {
+//     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+//   }
+// `;
+
+// const Greeting = () => {
+//   const [currentName, setCurrentName] = useState('');
+//   const [showGreeting, setShowGreeting] = useState(false);
+//   const [slideIn, setSlideIn] = useState(true);
+
+//   const names = ['Bangaram', 'Baby', 'Mardala', 'Baby', 'Rakshashi', 'Bujji', 'Kanna'];
+
+//   useEffect(() => {
+//     let index = 0;
+//     const interval = setInterval(() => {
+//       if (index < names.length) {
+//         setCurrentName(names[index]);
+//         setSlideIn(false); // Trigger slide out
+//         setTimeout(() => {
+//           setSlideIn(true); // Trigger slide in
+//         }, 500); // Delay for slide out animation
+//         index++;
+//       } else {
+//         clearInterval(interval);
+//         setShowGreeting(true);
+//       }
+//     }, 2000); // Change name every 2 seconds
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <Box
+//       display="flex"
+//       justifyContent="center"
+//       alignItems="center"
+//       height="100vh"
+//       sx={{
+//         background: 'linear-gradient(to right, #4776E6, #8E54E9)',
+//         fontFamily: 'Arial, sans-serif',
+//         textAlign: 'center',
+//         flexDirection: 'column',
+//         gap: 4
+//       }}
+//     >
+//       <Slide direction="up" in={slideIn} mountOnEnter unmountOnExit>
+//         <Box display="flex" alignItems="center" gap={2}>
+//           <motion.div
+//             animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+//             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+//             style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+//           >
+//             {icons[names.indexOf(currentName) % icons.length]}
+//           </motion.div>
+//           <motion.div
+//             initial={{ opacity: 0, y: -100 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 1 }}
+//           >
+//             <Typography
+//               variant={showGreeting ? "h1" : "h2"}
+//               sx={{
+//                 fontSize: showGreeting ? '64px' : '48px',
+//                 color: showGreeting ? '#DC3545' : 'transparent',
+//                 background: showGreeting ? '' : `linear-gradient(45deg, ${colors.join(', ')})`,
+//                 backgroundClip: 'text',
+//                 WebkitBackgroundClip: 'text',
+//                 animation: `${showGreeting ? '' : bounce} 2s infinite, ${textGradient} 5s ease infinite`,
+//                 transition: 'color 0.3s ease',
+//                 borderRadius: '8px',
+//                 padding: '20px 40px',
+//                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+//                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+//                 position: 'relative',
+//                 overflow: 'hidden',
+//               }}
+//             >
+//               {showGreeting ? 'Satya Bangaram I Love You' : currentName}
+//             </Typography>
+//           </motion.div>
+//           <motion.div
+//             animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+//             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+//             style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+//           >
+//             {icons[names.indexOf(currentName) % icons.length]}
+//           </motion.div>
+//         </Box>
+//       </Slide>
+//     </Box>
+//   );
+// };
+
+// export default Greeting;
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { Box, Typography, Slide } from '@mui/material';
+// import anime from 'animejs';
+// import { motion } from 'framer-motion';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import StarIcon from '@mui/icons-material/Star';
+// import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+// import ChildCareIcon from '@mui/icons-material/ChildCare';
+// import PetsIcon from '@mui/icons-material/Pets';
+// import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+// import WhatshotIcon from '@mui/icons-material/Whatshot';
+// import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+// import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
+
+// const colors = ['#007BFF', '#FFC107', '#28A745', '#DC3545', '#6610f2', '#17a2b8', '#FF5733', '#C70039', '#900C3F'];
+// const icons = [
+//   <FavoriteIcon fontSize="large" />,
+//   <StarIcon fontSize="large" />,
+//   <EmojiEmotionsIcon fontSize="large" />,
+//   <ChildCareIcon fontSize="large" />,
+//   <PetsIcon fontSize="large" />,
+//   <SentimentVerySatisfiedIcon fontSize="large" />,
+//   <WhatshotIcon fontSize="large" />,
+//   <ThumbUpIcon fontSize="large" />,
+//   <EmojiNatureIcon fontSize="large" />
+// ];
+
+// const Greeting = () => {
+//   const [currentName, setCurrentName] = useState('');
+//   const [showGreeting, setShowGreeting] = useState(false);
+//   const [slideIn, setSlideIn] = useState(true);
+
+//   const names = ['Bangaram', 'Baby', 'Mardala', 'Baby', 'Rakshashi', 'Bujji', 'Kanna'];
+
+//   useEffect(() => {
+//     let index = 0;
+//     const interval = setInterval(() => {
+//       if (index < names.length) {
+//         setCurrentName(names[index]);
+//         setSlideIn(false); // Trigger slide out
+//         setTimeout(() => {
+//           setSlideIn(true); // Trigger slide in
+//         }, 500); // Delay for slide out animation
+//         index++;
+//       } else {
+//         clearInterval(interval);
+//         setShowGreeting(true);
+//       }
+//     }, 2000); // Change name every 2 seconds
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   useEffect(() => {
+//     anime({
+//       targets: '.animated-name',
+//       translateX: function(el) {
+//         return el.getAttribute('data-x');
+//       },
+//       translateY: function(el, i) {
+//         return 50 + (-50 * i);
+//       },
+//       scale: function(el, i, l) {
+//         return (l - i) + .25;
+//       },
+//       rotate: function() { return anime.random(-360, 360); },
+//       borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
+//       duration: function() { return anime.random(1200, 1800); },
+//       delay: function() { return anime.random(0, 400); },
+//       direction: 'alternate',
+//       loop: true
+//     });
+//   }, [currentName]);
+
+//   return (
+//     <Box
+//       display="flex"
+//       justifyContent="center"
+//       alignItems="center"
+//       height="100vh"
+//       sx={{
+//         background: 'linear-gradient(to right, #4776E6, #8E54E9)',
+//         fontFamily: 'Arial, sans-serif',
+//         textAlign: 'center',
+//         flexDirection: 'column',
+//         gap: 4
+//       }}
+//     >
+//       <Slide direction="up" in={slideIn} mountOnEnter unmountOnExit>
+//         <Box display="flex" alignItems="center" gap={2}>
+//           <motion.div
+//             animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+//             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+//             style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+//           >
+//             {icons[names.indexOf(currentName) % icons.length]}
+//           </motion.div>
+//           <motion.div
+//             initial={{ opacity: 0, y: -100 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 1 }}
+//           >
+//             <Typography
+//               className="animated-name"
+//               data-x="100"
+//               variant={showGreeting ? "h1" : "h2"}
+//               sx={{
+//                 fontSize: showGreeting ? '64px' : '48px',
+//                 color: showGreeting ? '#DC3545' : 'transparent',
+//                 background: showGreeting ? '' : `linear-gradient(45deg, ${colors.join(', ')})`,
+//                 backgroundClip: 'text',
+//                 WebkitBackgroundClip: 'text',
+//                 animation: `${showGreeting ? '' : 'bounce 2s infinite'}`,
+//                 transition: 'color 0.3s ease',
+//                 borderRadius: '8px',
+//                 padding: '20px 40px',
+//                 boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+//                 textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+//                 position: 'relative',
+//                 overflow: 'hidden',
+//               }}
+//             >
+//               {showGreeting ? 'Satya Bangaram I Love You' : currentName}
+//             </Typography>
+//           </motion.div>
+//           <motion.div
+//             animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+//             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+//             style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+//           >
+//             {icons[names.indexOf(currentName) % icons.length]}
+//           </motion.div>
+//         </Box>
+//       </Slide>
+//     </Box>
+//   );
+// };
+
+// export default Greeting;
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Slide } from '@mui/material';
+import anime from 'animejs';
+import { motion } from 'framer-motion';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import StarIcon from '@mui/icons-material/Star';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import PetsIcon from '@mui/icons-material/Pets';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
+
+const colors = ['#007BFF', '#FFC107', '#28A745', '#DC3545', '#6610f2', '#17a2b8', '#FF5733', '#C70039', '#900C3F'];
+const icons = [
+  <FavoriteIcon fontSize="large" />,
+  <StarIcon fontSize="large" />,
+  <EmojiEmotionsIcon fontSize="large" />,
+  <ChildCareIcon fontSize="large" />,
+  <PetsIcon fontSize="large" />,
+  <SentimentVerySatisfiedIcon fontSize="large" />,
+  <WhatshotIcon fontSize="large" />,
+  <ThumbUpIcon fontSize="large" />,
+  <EmojiNatureIcon fontSize="large" />
+];
 
 const Greeting = () => {
   const [currentName, setCurrentName] = useState('');
   const [showGreeting, setShowGreeting] = useState(false);
+  const [slideIn, setSlideIn] = useState(true);
 
-  const names = ['Bangaram', 'Baby', 'Mardala', 'Baby','Rakshashi', 'Bujji', 'Kanna'];
-  const colors = ['#007BFF', '#FFC107', '#28A745', '#DC3545', '#6610f2', '#17a2b8'];
+  const names = ['Bangaram', 'Baby', 'Mardala', 'Baby', 'Rakshashi', 'Bujji', 'Kanna'];
 
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       if (index < names.length) {
         setCurrentName(names[index]);
+        setSlideIn(false); // Trigger slide out
+        setTimeout(() => {
+          setSlideIn(true); // Trigger slide in
+        }, 500); // Delay for slide out animation
         index++;
       } else {
         clearInterval(interval);
         setShowGreeting(true);
+        anime({
+          targets: '.line-drawing-demo .lines path',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutSine',
+          duration: 1500,
+          delay: function(el, i) { return i * 250 },
+          direction: 'alternate',
+          loop: true
+        });
       }
     }, 2000); // Change name every 2 seconds
 
     return () => clearInterval(interval);
-  }, []); //eslint-disable-line
+  }, []);
+
+  useEffect(() => {
+    anime({
+      targets: '.animated-name',
+      translateX: function(el) {
+        return el.getAttribute('data-x');
+      },
+      translateY: function(el, i) {
+        return 50 + (-50 * i);
+      },
+      scale: function(el, i, l) {
+        return (l - i) + .25;
+      },
+      rotate: function() { return anime.random(-360, 360); },
+      borderRadius: function() { return ['50%', anime.random(10, 35) + '%']; },
+      duration: function() { return anime.random(1200, 1800); },
+      delay: function() { return anime.random(0, 400); },
+      direction: 'alternate',
+      loop: true
+    });
+  }, [currentName]);
 
   return (
-    <div className="greeting-container">
-      <div className={showGreeting ? "greeting-message" : "greeting-name"} style={{ color: showGreeting ? '#DC3545' : colors[names.indexOf(currentName)] }}>
-        {showGreeting ? 'Satya Bangaram I Love You' : currentName}
-      </div>
-    </div>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      height="100vh"
+      sx={{
+        background: 'linear-gradient(to right, #4776E6, #8E54E9)',
+        fontFamily: 'Arial, sans-serif',
+        textAlign: 'center',
+        flexDirection: 'column',
+        gap: 4
+      }}
+    >
+      <Slide direction="up" in={slideIn} mountOnEnter unmountOnExit>
+        <Box display="flex" alignItems="center" gap={2}>
+          <motion.div
+            animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+          >
+            {icons[names.indexOf(currentName) % icons.length]}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <Typography
+              className={`animated-name ${showGreeting ? 'line-drawing-demo' : ''}`}
+              data-x="100"
+              variant={showGreeting ? "h1" : "h2"}
+              sx={{
+                fontSize: showGreeting ? '64px' : '48px',
+                color: showGreeting ? '#DC3545' : 'transparent',
+                background: showGreeting ? '' : `linear-gradient(45deg, ${colors.join(', ')})`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                animation: `${showGreeting ? '' : 'bounce 2s infinite'}`,
+                transition: 'color 0.3s ease',
+                borderRadius: '8px',
+                padding: '20px 40px',
+                boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              {showGreeting ? 'Satya Bangaram Im Sorry' : currentName}
+            </Typography>
+          </motion.div>
+          <motion.div
+            animate={{ rotate: 360, scale: [1, 1.5, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            style={{ color: colors[names.indexOf(currentName) % colors.length] }}
+          >
+            {icons[names.indexOf(currentName) % icons.length]}
+          </motion.div>
+        </Box>
+      </Slide>
+    </Box>
   );
 };
 
