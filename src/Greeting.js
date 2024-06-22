@@ -378,7 +378,7 @@ const Greeting = () => {
     }, 2000); // Change name every 2 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, []);  //eslint-disable-line
 
   useEffect(() => {
     anime({
